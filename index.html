@@ -1,150 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy B'day in Advance</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Georgia, serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Georgia", serif;
+}
 
-    body {
-      height: 100vh;
-      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
+body{
+  height:100vh;
+  background: radial-gradient(circle at top,#1b1f4b,#000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  overflow:hidden;
+  text-align:center;
+}
 
-    .container {
-      max-width: 90%;
-      animation: fadeIn 2s ease;
-    }
+.container{
+  width:100%;
+  max-width:400px;
+  padding:20px;
+}
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
+button{
+  padding:14px 34px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:white;
+  color:black;
+}
 
-    .design {
-      font-size: 20px;
-      opacity: 0.9;
-      margin-bottom: 20px;
-    }
+#count{
+  font-size:90px;
+  display:none;
+  margin:20px 0;
+}
 
-    button {
-      padding: 14px 32px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      background: #ffb347;
-      color: #000;
-      transition: 0.3s;
-    }
+#content{
+  display:none;
+  animation: fadeIn 2s ease;
+}
 
-    button:hover {
-      background: #ffd194;
-      transform: scale(1.05);
-    }
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-    #content {
-      display: none;
-      margin-top: 20px;
-      animation: fadeIn 2s ease;
-    }
+/* PHOTO STYLE */
+.photo{
+  width:180px;
+  height:180px;
+  margin:10px auto 20px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid rgba(255,255,255,0.6);
+  box-shadow:0 0 30px rgba(255,180,255,0.5);
+}
 
-    .photo {
-      width: 180px;
-      height: 180px;
-      margin: 15px auto;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.6);
-      box-shadow: 0 0 30px rgba(255,200,100,0.6);
-    }
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
 
-    .message {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-top: 15px;
-    }
+p{
+  font-size:18px;
+  line-height:1.6;
+}
 
-    .firework {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: gold;
-      animation: boom 1.5s ease-out forwards;
-    }
+/* FIREWORKS */
+.firework{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  animation: boom 1.5s ease-out forwards;
+}
 
-    @keyframes boom {
-      from { transform: scale(0); opacity: 1; }
-      to { transform: scale(5); opacity: 0; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
+@keyframes boom{
+  from{transform:scale(0);opacity:1;}
+  to{transform:scale(5);opacity:0;}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Happy B'day in Advance 🎉</h1>
-    <div class="design">Wishing you smiles, peace & endless happiness</div>
+<div class="container">
 
-    <button onclick="showWish()">Click for Surprise 💛</button>
+<button id="start">Begin</button>
 
-    <div id="content">
-      <div class="photo">
-        <img src="photo.jpg" alt="Birthday Girl">
-      </div>
+<div id="count">3</div>
 
-      <div class="message">
-        Dear Shraddha,<br><br>
-        May this birthday bring you calm moments,<br>
-        beautiful memories and quiet happiness.<br>
-        You deserve all the good things life has to offer. ✨<br><br>
-        — From someone who truly cares 🤍
-      </div>
-    </div>
+<div id="content">
+
+  <div class="photo">
+    <img src="photo.jpg" alt="Birthday Girl">
   </div>
 
-  <script>
-    function showWish() {
-      document.getElementById("content").style.display = "block";
-      fireworks();
-    }
+  <h1>Happy Birthday</h1>
 
-    function fireworks() {
-      for (let i = 0; i < 30; i++) {
-        let f = document.createElement("div");
-        f.className = "firework";
-        f.style.left = Math.random() * window.innerWidth + "px";
-        f.style.top = Math.random() * window.innerHeight + "px";
-        document.body.appendChild(f);
-        setTimeout(() => f.remove(), 1500);
-      }
+  <p>
+    Wishing you a very happy birthday<br>
+    dear <b>Shraddha</b><br><br>
+    19 January 2026
+  </p>
+
+</div>
+
+</div>
+
+<audio id="music">
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_4c8b2c9a1d.mp3">
+</audio>
+
+<script>
+const startBtn = document.getElementById("start");
+const countEl = document.getElementById("count");
+const content = document.getElementById("content");
+const music = document.getElementById("music");
+
+startBtn.addEventListener("click", ()=>{
+  startBtn.style.display="none";
+
+  music.play().catch(()=>{});
+
+  let n=3;
+  countEl.style.display="block";
+  countEl.innerText=n;
+
+  const timer = setInterval(()=>{
+    n--;
+    if(n>0){
+      countEl.innerText=n;
+    }else{
+      clearInterval(timer);
+      countEl.style.display="none";
+      content.style.display="block";
+      setInterval(fireworks,1200);
     }
-  </script>
+  },1000);
+});
+
+function fireworks(){
+  for(let i=0;i<25;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    f.style.background=`hsl(${Math.random()*360},100%,65%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1500);
+  }
+}
+</script>
 
 </body>
 </html>
